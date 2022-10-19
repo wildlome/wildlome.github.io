@@ -56,15 +56,23 @@ body, html {
 <script>
 
 var video = document.getElementsByTagName('video')[0];
+var init = false;
 
 function restartVideo(){
     console.log('restarting...');
-  video.pause();
-  video.currentTime = 0.1;
+  //video.pause();
+  //video.currentTime = 0.1;
   video.load();
 }
 
-setInterval(restartVideo,7000);
+video.oncanplay = function() {
+    //alert("Can start playing video");
+    if (!init){
+        init = true;
+        setInterval(restartVideo,7000);
+    }    
+};
+
 </script>
 
 </body>
