@@ -7,7 +7,7 @@
 <style>
 body, html {
     height: 100%;
-    background-color: rgb(225,209,190);
+    background-color: black;/* rgb(225,209,190); */
 }
 .className {
     min-width: 100%;
@@ -27,7 +27,27 @@ body, html {
 </head>
 <body>
 
+<!--
 <img src="back.png" class="className" />
+-->
+
+<video autoplay muted loop="true" class="className">
+  <source src="bgvideo.mp4" type="video/mp4">
+</video>
+
+<script>
+
+var vid = document.getElementsByTagName('video')[0];
+
+function restartVideo(){
+    console.log('restarting...');
+  vid.currentTime = 0.1; //setting to zero breaks iOS 3.2, the value won't update, values smaller than 0.1 was causing bug as well.
+  vid.play();
+}
+
+//loop video
+vid.addEventListener('ended', restartVideo, false);
+</script>
 
 </body>
 
