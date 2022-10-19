@@ -56,21 +56,19 @@ body, html {
 <script>
 
 var video = document.getElementsByTagName('video')[0];
-var init = false;
+video.style.visibility = 'none';
 
 function restartVideo(){
     console.log('restarting...');
   //video.pause();
   //video.currentTime = 0.1;
+  video.style.visibility = 'none';
   video.load();
 }
 
 video.oncanplay = function() {
-    //alert("Can start playing video");
-    if (!init){
-        init = true;
-        setInterval(restartVideo,7000);
-    }    
+    video.style.visibility = 'visible';
+    setTimeout(restartVideo,7000);  
 };
 
 </script>
